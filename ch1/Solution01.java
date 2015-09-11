@@ -17,7 +17,7 @@ public class Solution01 {
         String temp = "";
 
 //        For each character in the string, add the character to string "temp" and iterate through (all but
-//        the newest character of) temp to see if the character already exists in it
+//        the newest character of) temp to see if the character already exists in it.
 
         while (i < inputString.length() && allUnique == true) {
 
