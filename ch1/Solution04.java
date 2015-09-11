@@ -13,8 +13,8 @@ public class Solution04 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String inputString = input.readLine();
 
-//        In following the example of "Tact Coa", which is shown to produce "true", it is necessary
-//                to remove spaces and ignore differences of case.
+//        In following the example of "Tact Coa", which is shown to produce "true", it is
+//        necessary to remove spaces and ignore differences of case.
 
         String noSpacesString = inputString.replaceAll("\\s","");
         String allLowerNoSpacesString = noSpacesString.toLowerCase();
@@ -29,7 +29,7 @@ public class Solution04 {
 //        characters whose number of occurrences is odd.  A HashMap is used to count occurrences.
 
         boolean answer = true;
-        
+
         Map<Character, Integer> map = new HashMap<Character, Integer>();
 
         for (int i = 0; i < s.length(); i++) {
