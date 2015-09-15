@@ -6,6 +6,9 @@ import java.io.*;
 
 public class Solution05 {
 
+//    Not the cheapest solution given the problem, because this is O(n^2), but I needed to implement
+//    this anyway for my research project, so…
+
     public static void main(String[] args) throws IOException {
 
         System.out.print("Enter a string: ");
