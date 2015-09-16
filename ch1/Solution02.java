@@ -23,8 +23,8 @@ public class Solution02 {
     public static boolean isAPermutation(String s1, String s2) {
 
 //        For each string, create a dictionary (TreeMap) with a key for each unique character
-//        in the string and values being the number of occurrences of each character.  The TreeMap is
-//        alphabetically ordered, so it is easy to check for equality of the two TreeMaps.
+//        in the string and values being the number of occurrences of each character.  Check for equality
+//        between the two TreeMaps.
 
         Map<Character, Integer> map1 = new TreeMap<Character, Integer>();
         Map<Character, Integer> map2 = new TreeMap<Character, Integer>();
