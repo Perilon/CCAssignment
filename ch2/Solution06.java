@@ -1,7 +1,7 @@
 /**
  * Created by perilon on 9/16/15.
  */
-public class Solution05 {
+public class Solution06 {
 
     public static void main(String[] args) {
 
@@ -14,83 +14,23 @@ public class Solution05 {
         LinkedList LL2 = new LinkedList(1);
         LL2.appendToTail(2);
         LL2.appendToTail(6);
-        LL2.appendToTail(1);
-        LL2.appendToTail(5);
+        LL2.appendToTail(6);
+        LL2.appendToTail(2);
         LL2.appendToTail(1);
 
         System.out.print("Here is an example linked list: ");
         LL1.printLinkedList();
 
+        System.out.println("\nIt is " + Boolean.toString(LL1.isLLPalindrome()) + " that this linked " +
+                "list is a palindrome.\n");
+
         System.out.print("Here is a second example linked list: ");
         LL2.printLinkedList();
 
-        System.out.print("Here's the sum, followed by the linked list representing that sum: ");
-        LinkedList answer = sumTwoLinkedLists(LL1, LL2);
-        answer.printLinkedList();
+        System.out.println("\nIt is " + Boolean.toString(LL2.isLLPalindrome()) + " that this linked " +
+                "list is a palindrome.");
 
     }
-
-//    For each element in each linked list in turn, we turn that data into an int
-//    by multiplying it by the appropriate power of ten depending on how many decimal places we've progressed
-//    into the number represented by the linked list.  Then we add those two numbers together and iterate
-//    through a string representation of that total, from back to front, adding the int at each index to a
-//    new linked list node.
-
-    public static LinkedList sumTwoLinkedLists(LinkedList LL1, LinkedList LL2) {
-
-        int multiplier = 1;
-        int total = 0;
-
-        LinkedList.Node currNodeLL1 = LL1.head;
-
-        while (currNodeLL1 != null) {
-            int subtotal = multiplier * currNodeLL1.data;
-            total += subtotal;
-            multiplier *= 10;
-            currNodeLL1 = currNodeLL1.next;
-        }
-
-        LinkedList.Node currNodeLL2 = LL2.head;
-
-        multiplier = 1;
-
-        while (currNodeLL2 != null) {
-            int subtotal = multiplier * currNodeLL2.data;
-            total += subtotal;
-            multiplier *= 10;
-            currNodeLL2 = currNodeLL2.next;
-        }
-
-        String totalString = Integer.toString(total);
-
-        System.out.println(totalString);
-
-        int lenTotal = totalString.length();
-
-//        Initiate the new linked list, with the data of the head node being the last digit in the total
-//        that we've calculated.
-
-        LinkedList LLsum = new LinkedList(getIntAt(total, lenTotal - 1));
-
-//        Add the other nodes in turn, going backwards through the digits of the total.
-
-        for (int i = lenTotal - 2; i >= 0; i--) {
-            LLsum.appendToTail(getIntAt(total, i));
-        }
-
-        return LLsum;
-    }
-
-//    Returns as an int the digit of a number that is at a particular index of that number (by type casting
-//    around some)
-
-    public static int getIntAt(int number, int index){
-
-        String numberString = Integer.toString(number);
-        int digitAtIndex = Integer.parseInt(Character.toString(numberString.charAt(index)));
-        return digitAtIndex;
-    }
-
 }
 
 class LinkedList {
@@ -133,7 +73,7 @@ class LinkedList {
             currNode = currNode.next;
             System.out.print(currNode.data + " ");
         }
-        System.out.println("\n");
+//        System.out.println("\n");
     }
 
     public boolean deleteNode(int n) {
@@ -187,4 +127,31 @@ class LinkedList {
         }
         return counter;
     }
+
+//    New code
+//    Simply adds the data from each linked list node to a string and checks for palindromicity
+//    of the string
+
+    boolean isLLPalindrome() {
+
+        String LLAsString = "";
+
+        Node currNode = head;
+        while (currNode != null) {
+            String digitAsString = Integer.toString(currNode.data);
+            LLAsString += digitAsString;
+            currNode = currNode.next;
+        }
+
+        return isStringPalindrome(LLAsString);
+    }
+
+//    Checks to see if the reverse of a string is equal in value to the string
+
+    public static boolean isStringPalindrome(String s) {
+        String stringReversed = new StringBuilder(s).reverse().toString();
+        boolean answer = (stringReversed.equals(s));
+        return answer;
+    }
+
 }
