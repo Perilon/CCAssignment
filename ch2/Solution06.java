@@ -29,7 +29,6 @@ public class Solution06 {
 
         System.out.println("\nIt is " + Boolean.toString(LL2.isLLPalindrome()) + " that this linked " +
                 "list is a palindrome.");
-
     }
 }
 
@@ -130,7 +129,10 @@ class LinkedList {
 
 //    New code
 //    Simply adds the data from each linked list node to a string and checks for palindromicity
-//    of the string
+//    of the string.  I realize that this only works right now with ints of single digits.  One could imagine
+//    initializing an array of whatever objects are the types of the data of the nodes that is the
+//    same length as the linked list, and sticking the data into the spaces in the array.  Then you could
+//    write some simple function to tell whether those objects are the same back to front as front to back.
 
     boolean isLLPalindrome() {
 
